@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum STATE_TYPE
+public enum StateType
 {
-    CHASE,
-    ATTACK,
-    KITE,
-    DEFAULT,
+    Chase,
+    Attack,
+    Kite,
+    SwitchTarget,
+    Teleport,
+    Wander,
+    Wait,
+    Heal,
+    Default,
 }
 
 
@@ -27,8 +32,8 @@ public abstract class AIState
     public abstract void Activate();
 
     public EnemyAI Owner;
-    public STATE_TYPE Type;
+    public StateType Type;
     protected Transform transform;
-    protected GameObject Target;
+    public GameObject Target;
     protected NavMeshAgent Agent;
 }

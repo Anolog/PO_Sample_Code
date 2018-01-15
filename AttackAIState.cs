@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class AttackAIState : AIState {
 
-    public bool WaitingForFirstAttack;
-
     public AttackAIState(EnemyAI _Owner)
         : base(_Owner)
     {
-        Type = STATE_TYPE.ATTACK;
+        Type = StateType.Attack;
     }
 
     public override void Update()
@@ -20,7 +18,6 @@ public class AttackAIState : AIState {
         {
             Owner.Stats.Abilities[0].Use();
             Owner.attackTimer = Time.time + Owner.timeBetweenAttacks;
-            WaitingForFirstAttack = false;
         }
     }
 
@@ -31,8 +28,8 @@ public class AttackAIState : AIState {
 
     public override void Activate()
     {
-        Agent.isStopped = true;
-        Owner.attackTimer = Time.time + Owner.timeBeforeFirstAttack;
-        WaitingForFirstAttack = true;
+        //Debug.Log("In Attack");
+        Agent.isStopped = false;
+        //Owner.attackTimer = Time.time + Owner.timeBeforeFirstAttack;
     }
 }
